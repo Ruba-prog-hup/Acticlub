@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
 // POST /api/auth/register
 app.post("/api/auth/register", async (req, res) => {
   try {
-    // لاحظي أني أضفت profilePic هنا 👇
     const { uname, email, password, dateBirth, role, profilePic } = req.body;
 
     const existing = await UserModel.findOne({ email });
@@ -42,7 +41,7 @@ app.post("/api/auth/register", async (req, res) => {
       email,
       password: hashed,
       dateBirth,
-      profilePic: profilePic || "",   // الآن المتغيّر معروف
+      profilePic: profilePic || "",  
       role: role || "user",
     });
 
@@ -325,3 +324,4 @@ app.get("/api/location", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
