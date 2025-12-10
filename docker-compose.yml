@@ -1,0 +1,19 @@
+services:
+  server:
+    build: ./server
+    container_name: acticlub-server
+    ports:
+      - "5000:5000"       # host:container
+    environment:
+      # Use your MongoDB connection string here
+      - MONGO_URI=mongodb+srv://ray:1234@cluster0.eezejxf.mongodb.net/AntiClub?retryWrites=true&w=majority&appName=Cluster0
+    restart: unless-stopped
+
+  client:
+    build: ./client
+    container_name: acticlub-client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    restart: unless-stopped
