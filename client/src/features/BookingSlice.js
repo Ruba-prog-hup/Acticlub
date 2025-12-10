@@ -5,7 +5,7 @@ export const addBooking = createAsyncThunk(
   "bookings/addBooking",
   async ({ userId, activityId, seats }, { rejectWithValue }) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/bookings", {
+      const res = await axios.post("https://acticlub2.onrender.com/api/bookings", {
         userId,
         activityId,
         seats,
@@ -23,7 +23,7 @@ export const getUserBookings = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/bookings/user/${userId}`
+        `https://acticlub2.onrender.com/api/bookings/user/${userId}`
       );
       return res.data;
     } catch (err) {
@@ -37,7 +37,7 @@ export const deleteBooking = createAsyncThunk(
   "bookings/deleteBooking",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`http://localhost:5000/api/bookings/${id}`);
+      await axios.delete(`https://acticlub2.onrender.com/api/bookings/${id}`);
       return id;
     } catch (err) {
       const msg = err.response?.data?.message || "Failed to delete booking";
@@ -51,7 +51,7 @@ export const updateBooking = createAsyncThunk(
   async ({ id, seats }, { rejectWithValue }) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/bookings/${id}`,
+        `https://acticlub2.onrender.com/api/bookings/${id}`,
         { seats }
       );
       return res.data; 
@@ -145,3 +145,4 @@ const BookingSlice = createSlice({
 
 export const { clearBookingMessage } = BookingSlice.actions;
 export default BookingSlice.reducer;
+
