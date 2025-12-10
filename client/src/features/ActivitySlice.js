@@ -5,7 +5,7 @@ export const fetchActivities = createAsyncThunk(
   "activities/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/activities");
+      const res = await axios.get("https://acticlub2.onrender.com/api/activities");
       return res.data;
     } catch (err) {
       return rejectWithValue("Failed to load activities");
@@ -18,7 +18,7 @@ export const createActivity = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/activities",
+        "https://acticlub2.onrender.com/api/activities",
         data
       );
       return res.data;
@@ -34,7 +34,7 @@ export const updateActivity = createAsyncThunk(
   async ({ id, data }, { rejectWithValue }) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/activities/${id}`,
+        `https://acticlub2.onrender.com/api/activities/${id}`,
         data
       );
       return res.data;
@@ -48,7 +48,7 @@ export const deleteActivity = createAsyncThunk(
   "activities/delete",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`http://localhost:5000/api/activities/${id}`);
+      await axios.delete(`https://acticlub2.onrender.com/api/activities/${id}`);
       return id;
     } catch (err) {
       return rejectWithValue("Failed to delete activity");
@@ -92,3 +92,4 @@ const ActivitySlice = createSlice({
 });
 
 export default ActivitySlice.reducer;
+
