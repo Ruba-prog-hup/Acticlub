@@ -6,7 +6,7 @@ export const getUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://acticlub2.onrender.com/api/auth/login",
         userData
       );
       return res.data; 
@@ -23,7 +23,7 @@ export const addUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://acticlub2.onrender.com/api/auth/register",
         userData
       );
       return res.data; 
@@ -103,3 +103,4 @@ export const UserSlice = createSlice({
 
 export const { logout } = UserSlice.actions;
 export default UserSlice.reducer;
+
